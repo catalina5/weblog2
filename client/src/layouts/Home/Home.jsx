@@ -1,8 +1,7 @@
 import React from 'react'
 import '../../assets/styles/home.css'
+import Contact from './Contact'
 import Home_Posts from './Home_Recent'
-import PostsComent from 'src/components/PostsComent'
-
 const Home = () => {
 	return <div>
 			<div className='Home container-fruid'>
@@ -12,11 +11,11 @@ const Home = () => {
 								<div className='demo'></div>
 								<br/>
 								<Home_Posts/>
+								<Contact/>
 							</div>
 					</div>
 			</div>
 			<br></br>
-			<PostsComent />
 	</div>
 }
 
