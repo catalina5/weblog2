@@ -1,0 +1,132 @@
+.breadcrumb {
+	color: #aaaaaa;
+	font-family: Montserrat;
+	font-size: 12px;
+	margin: 0px 0px 15px;
+}
+.breadcrumb a {
+	color: #aaa;
+	transition: color 0.17s;
+}
+.b-label {
+	background-position: 0px 0px;
+	color: #aaaaaa;
+	display: inline-block;
+	font-family: Montserrat;
+	font-size: 12px;
+}
+.post-meta {
+	background-position: 0px 0px;
+	color: #646464;
+	font-size: 11px;
+	font-weight: 500;
+	padding: 0px 1px;
+	text-transform: uppercase;
+}
+.post-author a,
+.post-date {
+	background-position: 0px 0px;
+	color: #646464;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 500;
+	margin: 0px 10px 0px 0px;
+	text-transform: uppercase;
+}
+.post-author a,
+.post-date {
+	color: #333;
+}
+
+.post-date i,
+.post-author i {
+	margin: 0px 4px;
+}
+.post-body {
+	width: 46%;
+	margin: 20px 0px;
+}
+.post-body_img {
+	width: 100%;
+	margin: 20px 0px;
+}
+
+.post-body-list {
+	padding: 10px 0px;
+}
+.list-text-boder {
+	background-color: #01ff24;
+	border-color: #27ae60;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	color: #888888;
+	font-family: Montserrat;
+	font-size: 15px;
+	line-height: 22.5px;
+	padding: 10px 15px;
+	text-align: left;
+}
+.post-body-list_heading {
+	margin: 10px 0;
+}
+.pading-content {
+	padding: 6px 30px;
+}
+.post-labels {
+	display: flex;
+	align-items: center;
+}
+.post-labels span {
+	background-position: 0px 0px;
+	color: #ffffff;
+	font-size: 14px;
+	background-color: #a873ff;
+	margin: 0px 10px;
+	padding: 5px 10px;
+}
+.label-link {
+	background-color: #f2f2f2;
+	background-position: 0px 0px;
+	font-family: Montserrat;
+	font-size: 12px;
+	line-height: 22px;
+	margin: 0px 0px 0px 5px;
+	color: #333;
+	padding: 5px 10px;
+}
+.post-body-list_item {
+	display: flex;
+	width: 40%;
+	justify-content: space-between;
+}
+.post-body-list_item li {
+	padding: 4px 0px;
+	width: 100%;
+	margin: 0px 4px;
+	display: flex;
+	justify-content: center;
+	color: #fff;
+	border-radius: 2px;
+}
+.fb {
+	background-color: #3b5999;
+}
+.tw {
+	background-color: #00acee;
+}
+.priter {
+	background-color: #ca2127;
+}
+.in{
+	background-color: #0077b5;
+}
+.phone{
+	background-color: #3fbb50;
+}
+.wpapp{
+	background-color: #888888;
+}
+.email{
+	background-color: #888888;
+}
