@@ -23,7 +23,7 @@ const Home_Posts = () => {
                 <h3>Recent posts</h3>
             </div>
 
-           <div className='wrap'>
+           <div className=''>
             <div className="row">
                    {sliceData.map((post, index) => {
                        return  (<div key={index} className="posts-item col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-5 mb-2">
