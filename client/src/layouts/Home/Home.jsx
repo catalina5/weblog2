@@ -1,7 +1,10 @@
 import React from 'react'
 import '../../assets/styles/home.css'
+import Contact from './Contact'
 import Home_Posts from './Home_Recent'
+
 import Banner from './Banner'
+
 
 const Home = () => {
 	return <div>
@@ -14,6 +17,7 @@ const Home = () => {
 								<div className='demo'></div>
 								<br/>
 								<Home_Posts/>
+								<Contact/>
 							</div>
 					</div>
 			</div>
