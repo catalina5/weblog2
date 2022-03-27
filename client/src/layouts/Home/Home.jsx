@@ -2,6 +2,7 @@ import React from 'react'
 import '../../assets/styles/home.css'
 import Home_Posts from './Home_Recent'
 import Banner from './Banner'
+import Contents from './Contents'
 
 const Home = () => {
 	return <div>
@@ -11,7 +12,9 @@ const Home = () => {
 							<Banner />
 						</div>
 							<div className='col-sm-12 col-md-6 col-lg-6 col-xl-6 home_content'>
-								<div className='demo'></div>
+								<div className='demo'>
+									<Contents />
+								</div>
 								<br/>
 								<Home_Posts/>
 							</div>

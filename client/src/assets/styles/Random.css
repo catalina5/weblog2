@@ -1,0 +1,35 @@
+.wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+.home{
+    width: 10px;
+    height: 10px;
+    background: red;
+}
+h1{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-left: 43pc;
+}
+/* .post-container {
+    padding-left: 10px;
+    font-weight: 600;
+} */
+.post-item{
+    display: flex;
+    padding-bottom: 21px;
+}
+title{
+    padding-left: 40px;
+}
+img {
+    display: block;
+    /* max-width: 100%; */
+    padding-right: 8px;
+    height: 70px;
+    width: 90px;
+}
+.huy{
+    padding-top: 10px;
+}
