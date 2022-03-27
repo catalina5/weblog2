@@ -2,9 +2,9 @@ import React from 'react'
 import '../../assets/styles/home.css'
 import Contact from './Contact'
 import Home_Posts from './Home_Recent'
-
 import Banner from './Banner'
 import Contents from './Contents'
+import Slider from './Slider'
 
 
 const Home = () => {
@@ -16,6 +16,7 @@ const Home = () => {
 						</div>
 							<div className='col-sm-12 col-md-6 col-lg-6 col-xl-6 home_content'>
 								<div className='demo'>
+									<Slider />
 									<Contents />
 								</div>
 								<br/>
