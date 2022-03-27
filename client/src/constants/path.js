@@ -2,8 +2,8 @@ export const path = {
 	home: '/',
 	login: '/login',
 	register: '/register',
-	post: '/post',
-	postDetail: '/post/:idPost',
+	product: '/product',
+	productDetail: '/product/:idProduct',
 	user: '/user',
 	notFound: '*'
 }
