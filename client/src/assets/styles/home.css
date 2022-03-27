@@ -1,0 +1,16 @@
+.Home {
+    background-color: #f8f8f8;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.home_banner {
+    background-image: url('https://blogger.googleusercontent.com/img/a/AVvXsEgVvOZkZ65S4fIjbDm0jXIDe3cyJuuFIqi1HbD4vTJoS3qcUhD_VZ27S-K4_gcVTJJBPBeqntDfHmYidYtPlbTWELWf7COAHXtOG6IZyyMgHPMK2i6uD80SRaUuZZrQljHuonJE8AKGlECdvv9Yrz1yEGQJqet7FSc-kKWWtR5Q4owIv50Ql7mXoNT3=w1047-h1066-p-k-no-nu');
+    background-repeat: no-repeat;
+}
+.demo {
+    width: 100%;
+    height: 1200px;
+    background-color: green;
+}
+
