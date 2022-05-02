@@ -16,7 +16,7 @@ const Slider = () => {
 		if (count === -3075) {
 			setCount(615)
 		}
-		setCount(count => count - 615)
+		setCount(count => count - 615)	
 		console.log(count)
 	}
 	//giảm

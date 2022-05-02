@@ -1,7 +1,7 @@
 .container-slider {
 	position: relative;
 	height: 352px;
-	width: 615px;
+	width: 100%;
 }
 .slider-list {
 	width: 100%;
@@ -11,12 +11,11 @@
 }
 .slider-list-items {
 	height: 352px;
-	width: 615px;
+	width: 100%;
 }
 .slider-list_item {
 	width: 100%;
 	height: 100%;
-
 }
 .btn-list {
 	width: 15%;
