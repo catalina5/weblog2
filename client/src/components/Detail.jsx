@@ -5,9 +5,11 @@ import { Navdetail_container } from 'src/layouts/Detail/navdetail/navdetail_cont
 
 const Detail = () => {
 	return <div>
+
 		< Header />
 		< Navdetail_container />
 		<Footer />
+
 	</div>
 }
 
