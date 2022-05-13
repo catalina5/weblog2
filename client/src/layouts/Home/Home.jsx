@@ -5,6 +5,7 @@ import Home_Posts from './Home_Recent'
 import Banner from './Banner'
 import Contents from './Contents'
 import Slider from './Slider'
+import { Navdetail_comment } from '../Detail/navdetail/navdetail_container/navdetail_comment/Navdetail_comment'
 
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
 					</div>
 			</div>
 			<br></br>
+			<Navdetail_comment/>
 	</div>
 }
 
