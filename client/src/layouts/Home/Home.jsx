@@ -26,8 +26,6 @@ const Home = () => {
 							</div>
 					</div>
 			</div>
-			<br></br>
-			<Navdetail_comment/>
 	</div>
 }
 
