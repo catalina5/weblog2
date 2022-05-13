@@ -1,7 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { path } from 'src/constants/path'
+import { useNavigate, Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
+import { register } from '../redux/features/authSlice'
+import { toast } from 'react-toastify'
 
 export const Wrapped = styled.div`
 	width: 100%;
@@ -73,20 +76,82 @@ export const LinkRegister = styled.div`
 		margin-left: 10px;
 	}
 `
-
+const initialState = {
+	firstName: '',
+	lastName: '',
+	email: '',
+	password: '',
+	confirmPassword: ''
+}
 const Register = () => {
+	const { loading, error } = useSelector(state => ({ ...state.auth }))
+	const [formValue, setFormValue] = useState(initialState)
+	const { email, password, firstName, lastName, confirmPassword } = formValue
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		error && toast.error(error)
+	}, [error])
+
+	const handleSubmit = e => {
+		e.preventDefault()
+		if (password !== confirmPassword) {
+			return toast.error('Password should match')
+		}
+		if (email && password && firstName && lastName && confirmPassword) {
+			dispatch(register({ formValue, navigate, toast }))
+		}
+	}
+	const onInputChange = e => {
+		let { name, value } = e.target
+		setFormValue({ ...formValue, [name]: value })
+	}
 	return (
 		<Wrapped>
-			<Form>
+			<Form onSubmit={handleSubmit}>
 				<FormTitle>Register</FormTitle>
-				<InputText placeholder="Username" type="text"></InputText>
-				<InputText placeholder="Email" type="text"></InputText>
-				<InputPassword placeholder="Password" type="password"></InputPassword>
+				<InputText
+					label="First Name"
+					name="firstName"
+					placeholder="First Name"
+					type="text"
+					value={firstName}
+					onChange={onInputChange}
+				></InputText>
+				<InputText
+					label="Last Name"
+					name="lastName"
+					placeholder="Last Name"
+					type="text"
+					value={lastName}
+					onChange={onInputChange}
+				></InputText>
+				<InputText
+					label="Email"
+					value={email}
+					name="email"
+					onChange={onInputChange}
+					placeholder="Email"
+					type="email"
+				></InputText>
 				<InputPassword
-					placeholder="Confirm Password"
+					label="Password"
 					type="password"
+					value={password}
+					name="password"
+					onChange={onInputChange}
+					placeholder="Password"
 				></InputPassword>
-				<Button>Register</Button>
+				<InputPassword
+					label="Confirm Password"
+					type="password"
+					value={confirmPassword}
+					name="confirmPassword"
+					onChange={onInputChange}
+					placeholder="Confirm Password"
+				></InputPassword>
+				<Button type="submit">Register</Button>
 				<LinkRegister>
 					Have an account?<Link to={path.login}>Login Here</Link>
 				</LinkRegister>
