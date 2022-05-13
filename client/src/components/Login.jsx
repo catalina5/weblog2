@@ -1,7 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
 import { path } from 'src/constants/path'
 import styled from 'styled-components'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
+import { login } from '../redux/features/authSlice'
+const initialState = {
+	email: '',
+	password: ''
+}
 
 export const Wrapped = styled.div`
 	width: 100%;
@@ -75,13 +82,46 @@ export const LinkRegister = styled.div`
 `
 
 const Login = () => {
+	const [formValue, setFormValue] = useState(initialState)
+	const { email, password } = formValue
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+	const { loading, error } = useSelector(state => ({ ...state.auth }))
+
+	useEffect(() => {
+		error && toast.error(error)
+	}, [error])
+	const handleSubmit = e => {
+		e.preventDefault()
+		if (email && password) {
+			dispatch(login({ formValue, navigate, toast }))
+		}
+	}
+	const onInputChange = e => {
+		let { name, value } = e.target
+		setFormValue({ ...formValue, [name]: value })
+	}
 	return (
 		<Wrapped>
-			<Form>
+			<Form onSubmit={handleSubmit}>
 				<FormTitle>Login</FormTitle>
-				<InputText placeholder="Email" type="text"></InputText>
-				<InputPassword placeholder="Password" type="password"></InputPassword>
-				<Button>Login</Button>
+				<InputText
+					label="Email"
+					value={email}
+					name="email"
+					onChange={onInputChange}
+					placeholder="Email"
+					type="email"
+				></InputText>
+				<InputPassword
+					label="Password"
+					type="password"
+					value={password}
+					name="password"
+					onChange={onInputChange}
+					placeholder="Password"
+				></InputPassword>
+				<Button type="submit">Login</Button>
 				<LinkRegister>
 					Don't have an account?<Link to={path.register}>Register Here</Link>
 				</LinkRegister>
