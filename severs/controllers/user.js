@@ -10,12 +10,9 @@ const signin = async (req, res) => {
     const oldUser = await UserModal.findOne({ email });
     if (!oldUser)
       return res.status(404).json({ message: "User doesn't exist" }); // email khong dung
-
     const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
-
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" }); // mat khau khong dung
-
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
       expiresIn: "1h",
     });
@@ -30,13 +27,10 @@ const signup = async (req, res) => {
   const { email, password, firstName, lastName } = req.body;
   try {
     const oldUser = await UserModal.findOne({ email });
-
     if (oldUser) {
       return res.status(400).json({ message: "User already exists" }); // User da dc dang ki
     }
-
     const hashedPassword = await bcrypt.hash(password, 12); // Ma hoa mat khau
-
     const result = await UserModal.create({
       email,
       password: hashedPassword,
