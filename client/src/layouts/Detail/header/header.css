@@ -1,5 +1,9 @@
 .header-detail-text {
 	margin: 0px 14px;
-    color: #fff;
+	color: #fff;
 }
 
+.btn-infos-item {
+	color: #fff;
+    width: 80px;
+}
