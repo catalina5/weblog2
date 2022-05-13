@@ -22,9 +22,8 @@
 	font-weight: 600;
 	width: 55%;
 }
-.post-item {
+.post-item-history {
 	display: flex;
-	justify-content: space-between;
 	margin-bottom: 3rem;
 	width: 100%;
 }
