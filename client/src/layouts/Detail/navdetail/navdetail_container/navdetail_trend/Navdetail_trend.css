@@ -1,0 +1,12 @@
+.nav-detail-link {
+	margin-right: 10px;
+}
+li {
+	list-style: none;
+	padding-bottom: 10px;
+}
+.detail-img {
+	height: 800px;
+	width: 100%;
+	border-radius: 2px;
+}
