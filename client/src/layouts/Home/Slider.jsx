@@ -30,9 +30,10 @@ const Slider = () => {
 	}
 	return (
 		<div className="container-slider">
-			<div className="slider-list">
+			<div className="slider-list mt-4">
+				<h1 className="slider-heading">More Top Stories</h1>
 				<div
-					className="slider-translate "
+					className="slider-translate  mt-4"
 					style={{ transform: `translateX(${count}px)` }}
 				>
 					<div className="slider-list-items">

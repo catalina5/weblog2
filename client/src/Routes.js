@@ -5,6 +5,7 @@ import Login from './components/Login'
 import User from './components/User'
 import Register from './components/Register'
 import NotFound from './components/NotFound'
+import Detail from './components/Detail'
 import { path } from './constants/path'
 
 const Router = () => {
@@ -15,6 +16,7 @@ const Router = () => {
 			<Route path={path.register} element={<Register />} />
 			<Route path={path.user} element={<User />} />
 			<Route path={path.notFound} element={<NotFound />} />
+			<Route path={path.productDetail} element={<Detail />} />
 		</Routes>
 	)
 }

@@ -21,8 +21,8 @@ const data = [
 function Contents(props) {
 	return (
 		<div className="mt-4 contents_container_all">
-			<h1 className="contents_heading">Popular Posts</h1>
-			<div className="wrap">
+			<h1 className="slider-heading mt-4">Popular Posts</h1>
+			<div className="wrap mt-4">
 				<div className="post-content">
 					<div className="post-content-img">
 						<img src="https://blogger.googleusercontent.com/img/a/AVvXsEgVvOZkZ65S4fIjbDm0jXIDe3cyJuuFIqi1HbD4vTJoS3qcUhD_VZ27S-K4_gcVTJJBPBeqntDfHmYidYtPlbTWELWf7COAHXtOG6IZyyMgHPMK2i6uD80SRaUuZZrQljHuonJE8AKGlECdvv9Yrz1yEGQJqet7FSc-kKWWtR5Q4owIv50Ql7mXoNT3=w320-h440-p-k-no-nu" />
