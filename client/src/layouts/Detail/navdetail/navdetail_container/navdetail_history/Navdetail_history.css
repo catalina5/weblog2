@@ -1,54 +1,18 @@
-.home{
-  width: 10px;
-  height: 10px;
-  background: red;
+.huyoccho {
+	margin-bottom: 50px;
+}
+.mt-4 h1 {
+	margin-bottom: 20px;
+}
+.post-item-img {
+	height: 120px;
+	max-width: 100px;
+	width: 100%;
+	margin-right: 15px;
 }
 
-.post-item{
-  display: flex;
-  padding-bottom: 21px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-title{
-  padding-left: 40px;
-}
-img {
-  display: block;
-  /* max-width: 100%; */
-  padding-right: 8px;
-  height: 70px;
-  width: 90px;
-  object-fit: cover;
-}
-.huy{
-  padding-top: 10px;
-}
-.wrap {
-  display: flex;
-  justify-content: flex-end;
-}
-.home{
-  width: 10px;
-  height: 10px;
-  background: red;
-}
-
-.post-item-history img{
-  width: 100px;
-  object-fit: cover;
-}
-title{
-  padding-left: 40px;
-} 
-.post-container{
-  width: 100%;
-}
-.post-item .title {
-  margin-left: auto;
-}
-
-.post-item-history {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+.post-item-img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
