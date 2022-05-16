@@ -1,5 +1,4 @@
 import '../../assets/styles/Contents.css'
-
 const data = [
 	{
 		id: 1,
@@ -23,11 +22,14 @@ function Contents(props) {
 		<div className="mt-4 contents_container_all">
 			<h1 className="slider-heading mt-4">Popular Posts</h1>
 			<div className="wrap mt-4">
-				<div className="post-content">
-					<div className="post-content-img">
-						<img src="https://blogger.googleusercontent.com/img/a/AVvXsEgVvOZkZ65S4fIjbDm0jXIDe3cyJuuFIqi1HbD4vTJoS3qcUhD_VZ27S-K4_gcVTJJBPBeqntDfHmYidYtPlbTWELWf7COAHXtOG6IZyyMgHPMK2i6uD80SRaUuZZrQljHuonJE8AKGlECdvv9Yrz1yEGQJqet7FSc-kKWWtR5Q4owIv50Ql7mXoNT3=w320-h440-p-k-no-nu" />
-					</div>
-				</div>
+				{data &&
+					data.slice(0, 1).map((item, i) => (
+						<div className="post-content">
+							<img className="post-content__img" src={item.img} alt="" />
+							<div className="post-content__overlay"></div>
+							<div className="post-content__title">{item.title}</div>
+						</div>
+					))}
 				<div className="post-container">
 					{data.map((movie, index) => (
 						<div key={index} className="post-item">

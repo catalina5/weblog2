@@ -2,13 +2,34 @@
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
+	height: auto;
+	/* align-items: center; */
+	margin-bottom: 20px;
 }
 .post-content {
 	width: 40%;
+	height: auto;
+	position: relative;
+}
+.post-content__img {
 	height: 100%;
 }
-.post-content-img {
+.post-content__overlay {
+	background-color: black;
+	opacity: 0.3;
 	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+}
+
+.post-content__title {
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	position: absolute;
+	bottom: 30px;
+	margin-left: 15px;
 }
 .post-content-img img {
 	border-radius: 2px;
@@ -17,6 +38,16 @@
 .contents_heading {
 	font-size: 24px;
 	font-weight: 400;
+}
+
+.post-item {
+	display: flex;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: 400;
+}
+.post-item:last-child {
+	margin-bottom: 0px;
 }
 .post-container {
 	font-weight: 600;
@@ -38,16 +69,17 @@
 	border-radius: 2px;
 	margin-right: 8px !important;
 }
-.font_container{
-    display: flex;
-    width: 100%;
+.font_container {
+	display: flex;
+	width: 100%;
 }
-.font_container_list{
-    display: flex;
-    width: 60%;
-    margin: auto;
-    justify-content: space-between;
+.font_container_list {
+	display: flex;
+	width: 100%;
+	margin: auto;
+	justify-content: space-evenly;
 }
 .font-number-s1 {
 	font-size: 50px;
+	color: rgb(137, 34, 206);
 }
