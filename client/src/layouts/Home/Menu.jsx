@@ -72,10 +72,10 @@ const Menu = ({ isActive, setIsActive, color }) => {
 						<Link to={path.home}>HOME</Link>
 					</ItemMenu>
 					<ItemMenu>
-						<Link to={path.login}>FEATURES</Link>
+						<Link to={path.login}>LOGIN</Link>
 					</ItemMenu>
 					<ItemMenu>
-						<Link to="">DOCUMENTATION</Link>
+						<Link to={path.create}>CREATE</Link>
 					</ItemMenu>
 					<ItemMenu>
 						<Link to="">ABOUT ME</Link>

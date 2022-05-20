@@ -33,7 +33,7 @@ function Contents(props) {
 				<div className="post-container">
 					{data.map((movie, index) => (
 						<div key={index} className="post-item">
-							<img className="post-container_img" src={movie.img} />
+							<img className="post-container_img" src={movie.img} alt="" />
 							<p className="title">{movie.title}</p>
 						</div>
 					))}
