@@ -11,6 +11,7 @@
 	height: 100%;
 	width: 100%;
 	opacity: 1;
+	object-fit: cover;
 	transition: all 0.3s ease-in-out;
 }
 .banner-main {
@@ -39,4 +40,9 @@
 	border: none;
 	font-size: 14px;
 	border-radius: 2px;
+}
+
+.banner-main-btn a {
+	color: #fff;
+	text-decoration: none;
 }

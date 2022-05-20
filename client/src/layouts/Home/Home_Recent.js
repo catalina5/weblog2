@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../assets/styles/home_recent.css'
 import { FaUser } from 'react-icons/fa'
 import { GoClock } from 'react-icons/go'
-import { Routes, Route , Link} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'
 import data from 'src/data'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBlogs } from 'src/redux/features/blogSlice'
 
 const Home_Posts = () => {
 	const [moreElement, setMoreElement] = useState(6)
-	const sliceData = data.homePost.slice(0, moreElement)
-
+	const { blogs } = useSelector(state => state.blog)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(getBlogs())
+	}, [dispatch])
 	const loadMore = () => {
 		setMoreElement(moreElement + moreElement)
 	}
-
+	const navigate = useNavigate()
 	return (
 		<div className="home-posts">
 			<div className="home-post-title">
@@ -21,33 +26,35 @@ const Home_Posts = () => {
 
 			<div className="">
 				<div className="row">
-					{sliceData.map((post, index) => {
+					{blogs?.map((item, index) => {
 						return (
 							<div
-								key={index}
+								key={item._id}
 								className="posts-item col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-5 mb-2"
 							>
-								<Link to='/product/1'>
+								<Link to={`blog/${item._id}`} className="link-recent">
 									<div className="posts-item-overlay">
-										<img src={post.img} />
-										<button>{post.category}</button>
+										<img src={item.imageFile} alt="" />
 									</div>
 									<div className="posts-item-content">
 										<h2>
-											<a href="#">{post.title}</a>
+											<div>{item.title}</div>
 										</h2>
 										<div className="posts-item-info">
 											<div className="item-info-box">
 												<FaUser className="item-info-icon" />
-												<span>Sora Blogging Tips</span>
+												<span>{item.creator}</span>
 											</div>
 											<div className="item-info-box">
 												<GoClock className="item-info-icon" />
-												<span>January 22, 2022</span>
+												<span>{item.createdAt}</span>
 											</div>
 										</div>
 									</div>
 								</Link>
+								<button onClick={() => navigate(`/blog/tag/${item.tags}`)}>
+									{item.tags}
+								</button>
 							</div>
 						)
 					})}
