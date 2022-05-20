@@ -2,12 +2,13 @@ import React from 'react'
 import '../../assets/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css'
 import '../../assets/styles/content.css'
 import Image1 from '../../assets/img/slider1.jpg'
+import { Link } from 'react-router-dom'
 
 const Content = () => {
 	return (
 		<div>
 			<nav className="breadcrumb">
-				<a href="https://magsita-omtemplates.blogspot.com/">Home</a>
+				<Link to="/">Home</Link>
 				<i className="fa fa-angle-right" aria-hidden="true"></i>
 				<a
 					className="b-label"
@@ -21,14 +22,10 @@ const Content = () => {
 			<h1 className="post-title">Elegant woman in front of a waterfall</h1>
 			<div className="post-meta">
 				<span className="post-author">
-					<a
-						href="https://www.blogger.com/profile/16198139972321043555"
-						target="_blank"
-						title="Sora Blogging Tips"
-					>
+					<Link to="/">
 						<i className="fa fa-user" aria-hidden="true"></i>
 						Sora Blogging Tips
-					</a>
+					</Link>
 				</span>
 
 				<span
@@ -41,7 +38,7 @@ const Content = () => {
 			</div>
 			<div className="post-body post-content">
 				<div className="post-body-list">
-					<img src={Image1} className="post-body_img" />
+					<img src={Image1} className="post-body_img" alt="" />
 				</div>
 				<div className="post-body-list">
 					<span className="list-text">

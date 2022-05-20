@@ -16,3 +16,5 @@ export const signUp = formData => API.post('/users/signup', formData)
 
 export const createBlog = blogData => API.post('/blogs/post', blogData)
 export const getBlogs = () => API.get('/blogs')
+export const getBlog = id => API.get(`/blogs/${id}`)
+export const getBlogByTag = tag => API.get(`/blogs/tag/${tag}`)

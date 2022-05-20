@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import data from 'src/data'
 import '../assets/styles/post_comment.css'
 import { GoClock } from 'react-icons/go'
 import { FaRegCommentDots } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const PostsComent = () => {
 	const dataPosts = data.homePost
@@ -28,7 +29,7 @@ const PostsComent = () => {
 										<button>{post.category}</button>
 									</div>
 									<h3 className="post-item-content">
-										<a href="#">{post.title}</a>
+										<Link to="">{post.title}</Link>
 									</h3>
 									<div className="post-date">
 										<GoClock className="post-date-icon" />

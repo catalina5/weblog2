@@ -28,6 +28,9 @@ export const InputWrapper = styled.div`
 		font-size: 20px;
 		font-weight: 500;
 	}
+	& > * {
+		color: #6a5af9;
+	}
 	input,
 	textarea {
 		width: 100%;
@@ -38,6 +41,22 @@ export const InputWrapper = styled.div`
 		&:focus {
 			border: 1px solid #2cccff;
 		}
+	}
+`
+
+export const Button = styled.button`
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+	background-color: #2cccff;
+	border-radius: 5px;
+	border: none;
+	color: white;
+	&:hover {
+		box-shadow: 2px -2px 3px #ccc;
+		transition: all 0.2s linear;
+		transform: translate(-2px, 2px);
+		color: #f62682;
 	}
 `
 
@@ -99,13 +118,6 @@ const Creator = () => {
 						onChange={handleInputChange}
 					/>
 				</InputWrapper>
-				<FileBase
-					type="file"
-					multiple={false}
-					onDone={({ base64 }) =>
-						setBlogData({ ...blogData, imageFile: base64 })
-					}
-				/>
 				<InputWrapper>
 					<div className="title">Creator</div>
 					<input
@@ -115,7 +127,16 @@ const Creator = () => {
 						onChange={handleInputChange}
 					/>
 				</InputWrapper>
-				<button type="submit">Submit</button>
+				<InputWrapper>
+					<FileBase
+						type="file"
+						multiple={false}
+						onDone={({ base64 }) =>
+							setBlogData({ ...blogData, imageFile: base64 })
+						}
+					/>
+				</InputWrapper>
+				<Button type="submit">Submit</Button>
 			</form>
 		</FormWrapper>
 	)

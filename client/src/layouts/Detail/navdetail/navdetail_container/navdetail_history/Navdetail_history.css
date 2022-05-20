@@ -1,6 +1,9 @@
 .huyoccho {
 	margin-bottom: 50px;
 }
+.huy i {
+	margin-right: 15px;
+}
 .mt-4 h1 {
 	margin-bottom: 20px;
 }
@@ -11,8 +14,16 @@
 	margin-right: 15px;
 }
 
+.post-item {
+	margin-bottom: 40px;
+	cursor: pointer;
+}
+
 .post-item-img img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+.content__type .huy {
+	margin-bottom: 20px;
 }

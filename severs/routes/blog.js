@@ -8,14 +8,14 @@ const {
   createBlog,
   editBlog,
   deleteBlog,
-  getBlogBySlug,
+  getBlogByTag,
 } = require("../controllers/blog.js");
 
 router.post("/post", createBlog);
 router.get("/", getBlogs);
 router.put("/put/:id", editBlog);
 router.delete("/delete/:id", deleteBlog);
-router.get("/slug/:slug", getBlogBySlug);
+router.get("/tag/:tag", getBlogByTag);
 router.get("/:id", getBlog);
 
 module.exports = router;

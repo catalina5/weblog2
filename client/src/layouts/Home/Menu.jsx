@@ -1,15 +1,17 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 import { path } from 'src/constants/path'
 import styled, { css } from 'styled-components'
+import { setLogout } from '../../redux/features/authSlice'
+import decode from 'jwt-decode'
 
 const MenuWrapper = styled.div`
 	z-index: 1000;
 	position: relative;
 	background-image: linear-gradient(to bottom, #2cccff, #f62682);
 	width: 300px;
-	padding: 0 15px;
 	transition: transform 0.2s linear;
 	${props =>
 		!props.active &&
@@ -38,13 +40,18 @@ const IconToogle = styled.button`
 const ListMenu = styled.ul`
 	position: absolute;
 	top: 30px;
+	width: 100%;
 	& > li:hover > a {
 		color: #a873ff;
 	}
 `
 
 const ItemMenu = styled.li`
-	margin-bottom: 20px;
+	background-color: white;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 20px 0 20px 20px;
 	& > a {
 		color: black;
 		transition: color 0.1s linear;
@@ -53,26 +60,40 @@ const ItemMenu = styled.li`
 `
 
 const Menu = ({ isActive, setIsActive, color }) => {
-	// const handleToggle = () => {
-	// 	setActive(active => !active)
-	// }
-	// const [active, setActive] = useState(true)
+	const { user } = useSelector(state => ({ ...state.auth }))
+	const dispatch = useDispatch()
+	const token = user?.token
+	const userOnline = JSON.parse(localStorage.getItem('profile'))
+	if (token) {
+		const decodedToken = decode(token)
+		if (decodedToken.exp * 1000 < new Date().getTime()) {
+			dispatch(setLogout())
+		}
+	}
 	const handleToggle = () => {
 		setIsActive(isActive => !isActive)
+	}
+	const handleLogout = () => {
+		dispatch(setLogout())
 	}
 	return (
 		<MenuWrapper active={isActive}>
 			<div style={{ backgroundColor: 'white' }}>
-				{/* <IconToogle onClick={handleToggle}>X</IconToogle> */}
 				<IconToogle onClick={handleToggle}>
 					<i className="fa-solid fa-xmark"></i>
 				</IconToogle>
 				<ListMenu>
+					{userOnline ? (
+						<ItemMenu>
+							<h1>{userOnline.result.name}</h1>
+						</ItemMenu>
+					) : (
+						<ItemMenu>
+							<Link to={path.login}>LOGIN</Link>
+						</ItemMenu>
+					)}
 					<ItemMenu>
 						<Link to={path.home}>HOME</Link>
-					</ItemMenu>
-					<ItemMenu>
-						<Link to={path.login}>LOGIN</Link>
 					</ItemMenu>
 					<ItemMenu>
 						<Link to={path.create}>CREATE</Link>
@@ -80,6 +101,13 @@ const Menu = ({ isActive, setIsActive, color }) => {
 					<ItemMenu>
 						<Link to="">ABOUT ME</Link>
 					</ItemMenu>
+					{userOnline && (
+						<ItemMenu>
+							<div style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>
+								LOGOUT
+							</div>
+						</ItemMenu>
+					)}
 				</ListMenu>
 			</div>
 		</MenuWrapper>

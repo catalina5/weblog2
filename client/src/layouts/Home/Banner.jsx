@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import banner1 from '../../assets/img/banner1.jpg'
+import React, { Fragment, useEffect, useState } from 'react'
 import '../../assets/styles/banner.css'
 import Menu from './Menu'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBlogs } from 'src/redux/features/blogSlice'
+import { Link } from 'react-router-dom'
 const ToggleButton = styled.button`
 	height: max-content;
 	width: 40px;
@@ -19,8 +21,12 @@ const ToggleButton = styled.button`
 	right: 0;
 `
 const Banner = () => {
+	const { blogs } = useSelector(state => state.blog)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(getBlogs())
+	}, [dispatch])
 	const [isActive, setIsActive] = useState(false)
-	console.log(isActive)
 	const handleToggle = () => {
 		setIsActive(isActive => !isActive)
 	}
@@ -37,17 +43,19 @@ const Banner = () => {
 					{!isActive && <i className="fa-solid fa-bars"></i>}
 					{isActive && <i className="fa-solid fa-xmark"></i>}
 				</ToggleButton>
-				<img className="banner-img" src={banner1} alt=""></img>
-				<div className="banner-main">
-					<h1 className="banner-main-heading">Gird with camera style </h1>
-					<div className="banner-main-content">
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat
-						magni tempora rerum ratione? Tenetur nobis corporis fugiat
-						repudiandae eaque ullam voluptates ratione delectus, magnam nostrum
-						quidem sequi quibusdam, aliquid iure.
-					</div>
-					<button className="banner-main-btn">Read More</button>
-				</div>
+				{blogs &&
+					blogs.slice(0, 1).map(blog => (
+						<Fragment key={blog._id}>
+							<img className="banner-img" src={blog.imageFile} alt=""></img>
+							<div className="banner-main">
+								<h1 className="banner-main-heading">{blog.title} </h1>
+								<div className="banner-main-content">{blog.description}</div>
+								<button className="banner-main-btn">
+									<Link to={`blog/${blog._id}`}>Read More</Link>
+								</button>
+							</div>
+						</Fragment>
+					))}
 			</div>
 		</div>
 	)

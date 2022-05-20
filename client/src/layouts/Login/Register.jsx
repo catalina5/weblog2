@@ -3,7 +3,7 @@ import { path } from 'src/constants/path'
 import { useNavigate, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../redux/features/authSlice'
+import { register } from '../../redux/features/authSlice'
 import { toast } from 'react-toastify'
 
 export const Wrapped = styled.div`
@@ -84,7 +84,7 @@ const initialState = {
 	confirmPassword: ''
 }
 const Register = () => {
-	const { loading, error } = useSelector(state => ({ ...state.auth }))
+	const { error } = useSelector(state => ({ ...state.auth }))
 	const [formValue, setFormValue] = useState(initialState)
 	const { email, password, firstName, lastName, confirmPassword } = formValue
 	const dispatch = useDispatch()
@@ -93,7 +93,6 @@ const Register = () => {
 	useEffect(() => {
 		error && toast.error(error)
 	}, [error])
-
 
 	const handleSubmit = e => {
 		e.preventDefault()

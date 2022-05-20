@@ -4,6 +4,7 @@ export const path = {
 	register: '/register',
 	product: '/product',
 	productDetail: '/blog/:id',
+	BlogTag: '/blog/tag/:tag',
 	create: '/create',
 	notFound: '*'
 }

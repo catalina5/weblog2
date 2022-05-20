@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import '../navdetail_comment/post_comment.css'
-import data from 'src/data'
-
+import moment from 'moment'
 import { GoClock } from 'react-icons/go'
 import { FaRegCommentDots } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { getBlogs } from 'src/redux/features/blogSlice'
+import { useNavigate } from 'react-router-dom'
 
 export const Navdetail_comment = () => {
-	const dataPosts = data.homePost
-	const newPosts = dataPosts.sort(() => Math.random() - 0.5).slice(0, 3)
-	const postClone = [...newPosts]
-
+	const { blogs } = useSelector(state => state.blog)
+	const dispatch = useDispatch()
+	useEffect(() => {
+		dispatch(getBlogs())
+	}, [dispatch])
+	const navigate = useNavigate()
 	return (
 		<div className="wrap-post-comment">
 			<div className="post-comment">
@@ -17,28 +21,30 @@ export const Navdetail_comment = () => {
 					<h3>YOU MAY LIKE THESE POSTS</h3>
 				</div>
 				<div className="row mt-5 mb-5">
-					{postClone.map(post => {
-						return (
-							<div
-								key={post.id}
-								className="post-box col-sm-12 col-md-6 col-lg-4 col-xl-4"
-							>
-								<div className="post-comment-item">
-									<div className="post-item-overlay">
-										<img src={post.img} />
-										<button>{post.category}</button>
-									</div>
-									<h3 className="post-item-content">
-										<a href="#">{post.title}</a>
-									</h3>
-									<div className="post-date">
-										<GoClock className="post-date-icon" />
-										<span>January 22, 2022</span>
+					{blogs &&
+						blogs.slice(1, 4).map(post => {
+							return (
+								<div
+									onClick={() => navigate(`/blog/${post._id}`)}
+									key={post._id}
+									className="post-box col-sm-12 col-md-6 col-lg-4 col-xl-4"
+								>
+									<div className="post-comment-item">
+										<div className="post-item-overlay">
+											<img src={post.imageFile} alt="" />
+											<button>{post.tags}</button>
+										</div>
+										<h3 className="post-item-content">
+											<div>{post.title}</div>
+										</h3>
+										<div className="post-date">
+											<GoClock className="post-date-icon" />
+											<span>{moment(post.createdAt).fromNow()}</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						)
-					})}
+							)
+						})}
 				</div>
 
 				<div className="post-comment-btn">

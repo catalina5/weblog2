@@ -11,7 +11,7 @@ const getBlogs = async (req, res, next) => {
 const getBlog = async (req, res) => {
   const { id } = req.params;
   try {
-    const blog = await BlogModal.find(id);
+    const blog = await BlogModal.findById(id);
     res.status(200).json(blog);
   } catch (error) {
     res.status(404).json({ message: "Something went wrong" });
@@ -19,8 +19,10 @@ const getBlog = async (req, res) => {
 };
 const createBlog = async (req, res) => {
   const blog = req.body;
+  console.log(req);
   const newBlog = new BlogModal({
     ...blog,
+    createdBy: req.userId,
     createdAt: new Date().toISOString(),
   });
 
@@ -31,21 +33,6 @@ const createBlog = async (req, res) => {
     res.status(404).json({ message: "Something went wrong" });
   }
 };
-// const postBlog = async (req, res) => {
-//   const blog = req.body;
-//   console.log(blog);
-//   const newBlog = new BlogModal({
-//     ...blog,
-//     createdAt: new Date().toISOString(),
-//   });
-//   if (newBlog) {
-//     newBlog.save();
-//     res.status(201).json(newBlog);
-//   } else {
-//     res.status(404).json(error); //
-//   }
-//   return newBlog;
-// };
 
 const editBlog = function (req, res, next) {
   Items.updateOne({ _id: req.params.id }, req.body)
@@ -66,8 +53,8 @@ const deleteBlog = async (req, res, next) => {
   }
 };
 
-const getBlogBySlug = function (req, res, next) {
-  Items.findOne({ slug: req.params.slug })
+const getBlogByTag = function (req, res, next) {
+  BlogModal.find({ tags: req.params.tag })
     .then((item) => res.status(200).json(item))
     .catch(next);
 };
@@ -78,5 +65,5 @@ module.exports = {
   createBlog,
   editBlog,
   deleteBlog,
-  getBlogBySlug,
+  getBlogByTag,
 };

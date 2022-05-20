@@ -8,6 +8,7 @@ const blogSchema = new Schema(
     creator: String,
     tags: String,
     imageFile: String,
+    createdBy: String,
     createdAt: {
       type: Date,
       default: new Date(),

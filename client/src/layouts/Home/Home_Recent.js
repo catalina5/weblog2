@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../assets/styles/home_recent.css'
 import { FaUser } from 'react-icons/fa'
 import { GoClock } from 'react-icons/go'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import data from 'src/data'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBlogs } from 'src/redux/features/blogSlice'
@@ -17,7 +17,7 @@ const Home_Posts = () => {
 	const loadMore = () => {
 		setMoreElement(moreElement + moreElement)
 	}
-
+	const navigate = useNavigate()
 	return (
 		<div className="home-posts">
 			<div className="home-post-title">
@@ -32,14 +32,13 @@ const Home_Posts = () => {
 								key={item._id}
 								className="posts-item col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-5 mb-2"
 							>
-								<Link to={`blog/${item._id}`}>
+								<Link to={`blog/${item._id}`} className="link-recent">
 									<div className="posts-item-overlay">
 										<img src={item.imageFile} alt="" />
-										<button>{item.tags}</button>
 									</div>
 									<div className="posts-item-content">
 										<h2>
-											<Link to="">{item.title}</Link>
+											<div>{item.title}</div>
 										</h2>
 										<div className="posts-item-info">
 											<div className="item-info-box">
@@ -53,6 +52,9 @@ const Home_Posts = () => {
 										</div>
 									</div>
 								</Link>
+								<button onClick={() => navigate(`/blog/tag/${item.tags}`)}>
+									{item.tags}
+								</button>
 							</div>
 						)
 					})}
