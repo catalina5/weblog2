@@ -8,15 +8,6 @@ const getBlogs = async (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-const getBlog = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const blog = await BlogModal.findById(id);
-    res.status(200).json(blog);
-  } catch (error) {
-    res.status(404).json({ message: "Something went wrong" });
-  }
-};
 const createBlog = async (req, res) => {
   const blog = req.body;
   console.log(req.userId);
@@ -30,7 +21,7 @@ const createBlog = async (req, res) => {
     await newBlog.save();
     res.status(201).json(newBlog);
   } catch (error) {
-    res.status(404).json({ message: "Something went wrong" });
+    res.status(404).json({ message: "Lỗi không tạo được" });
   }
 };
 
@@ -43,13 +34,10 @@ const editBlog = function (req, res, next) {
 const deleteBlog = async (req, res, next) => {
   const { id } = req.params.id;
   try {
-    // if (!mongoose.Types.ObjectId.isValid(id)) {
-    //   return res.status(404).json({ message: `No Blog exist with id: ${id}` });
-    // }
     await BlogModal.deleteOne(id);
     res.json({ message: "Blog deleted successfully" });
   } catch (error) {
-    res.status(404).json({ message: "Something went wrong" });
+    res.status(404).json({ message: "Lỗi không xóa được!" });
   }
 };
 
@@ -59,6 +47,37 @@ const getBlogByTag = function (req, res, next) {
     .catch(next);
 };
 
+// const getBlogBySearch = async (req, res) => {
+//   const { searchQuery } = req.query;
+//   try {
+//     const title = new RegExp(searchQuery, "i");
+//     const blogs = await BlogModal.find({ title });
+//     res.json(blogs);
+//   } catch (error) {
+//     res.status(404).json({ message: "Something went wrong" });
+//   }
+// };
+
+const Search = async (req, res) => {
+  const { searchQuery } = req.query;
+  try {
+    const title = new RegExp(searchQuery, "i");
+    const blogs = await BlogModal.find({ title });
+    res.json(blogs);
+  } catch (error) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+};
+const getBlog = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const blog = await BlogModal.findById(id);
+    res.status(200).json(blog);
+  } catch (error) {
+    res.status(404).json({ message: "Lỗi không lấy được 1" });
+  }
+};
+
 module.exports = {
   getBlogs,
   getBlog,
@@ -66,4 +85,6 @@ module.exports = {
   editBlog,
   deleteBlog,
   getBlogByTag,
+  // getBlogBySearch,
+  Search,
 };

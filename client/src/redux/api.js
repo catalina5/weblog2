@@ -21,3 +21,5 @@ export const getBlogByTag = tag => API.get(`/blogs/tag/${tag}`)
 export const deleteBlog = id => API.delete(`/blogs/delete/${id}`)
 export const editBlog = (editBlogData, id) =>
 	API.put(`/blogs/put/${id}`, editBlogData)
+export const getBlogBySearch = searchQuery =>
+	API.get(`/blogs/search?searchQuery=${searchQuery}`)
