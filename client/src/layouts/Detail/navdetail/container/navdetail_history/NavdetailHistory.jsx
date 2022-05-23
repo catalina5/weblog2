@@ -5,7 +5,7 @@ import { getBlogs } from 'src/redux/features/blogSlice'
 import './Navdetail_history.css'
 import moment from 'moment'
 
-export const Navdetail_history = () => {
+export const NavdetailHistory = () => {
 	const { blogs } = useSelector(state => state.blog)
 	const dispatch = useDispatch()
 	useEffect(() => {

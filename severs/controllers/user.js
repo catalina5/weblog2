@@ -13,7 +13,7 @@ const signin = async (req, res) => {
     const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" }); // mat khau khong dung
-    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
+    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, "test", {
       expiresIn: "1h",
     });
 
@@ -37,7 +37,7 @@ const signup = async (req, res) => {
       name: `${firstName} ${lastName}`,
     }); // Bat dau tao user
 
-    const token = jwt.sign({ email: result.email, id: result._id }, secret, {
+    const token = jwt.sign({ email: result.email, id: result._id }, "test", {
       expiresIn: "1h",
     });
     res.status(201).json({ result, token });

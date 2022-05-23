@@ -19,7 +19,7 @@ const getBlog = async (req, res) => {
 };
 const createBlog = async (req, res) => {
   const blog = req.body;
-  console.log(req);
+  console.log(req.userId);
   const newBlog = new BlogModal({
     ...blog,
     createdBy: req.userId,
@@ -35,19 +35,19 @@ const createBlog = async (req, res) => {
 };
 
 const editBlog = function (req, res, next) {
-  Items.updateOne({ _id: req.params.id }, req.body)
+  BlogModal.updateOne({ _id: req.params.id }, req.body)
     .then((item) => res.status(200).json(item))
     .catch(next);
 };
 
 const deleteBlog = async (req, res, next) => {
-  const { id } = req.params;
+  const { id } = req.params.id;
   try {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({ message: `No tour exist with id: ${id}` });
-    }
-    await BlogModal.findByIdAndRemove(id);
-    res.json({ message: "Tour deleted successfully" });
+    // if (!mongoose.Types.ObjectId.isValid(id)) {
+    //   return res.status(404).json({ message: `No Blog exist with id: ${id}` });
+    // }
+    await BlogModal.deleteOne(id);
+    res.json({ message: "Blog deleted successfully" });
   } catch (error) {
     res.status(404).json({ message: "Something went wrong" });
   }

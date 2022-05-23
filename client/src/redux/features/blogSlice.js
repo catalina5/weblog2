@@ -3,10 +3,22 @@ import * as api from '../api'
 
 export const createBlog = createAsyncThunk(
 	'blog/createBlog',
-	async ({ blogData, navigate }, { rejectWithValue }) => {
+	async ({ updatedBlogData, navigate }, { rejectWithValue }) => {
 		try {
-			const response = await api.createBlog(blogData)
+			const response = await api.createBlog(updatedBlogData)
 			navigate('/')
+			return response.data
+		} catch (err) {
+			return rejectWithValue(err.response.data)
+		}
+	}
+)
+export const editBlog = createAsyncThunk(
+	'blog/editBlog',
+	async ({ updatedBlogData, id, navigate }, { rejectWithValue }) => {
+		try {
+			const response = await api.editBlog(updatedBlogData, id)
+			navigate(`/blog/${id}`)
 			return response.data
 		} catch (err) {
 			return rejectWithValue(err.response.data)
@@ -40,6 +52,19 @@ export const getBlogByTag = createAsyncThunk(
 	async (tag, { rejectWithValue }) => {
 		try {
 			const response = await api.getBlogByTag(tag)
+			return response.data
+		} catch (err) {
+			return rejectWithValue(err.response.data)
+		}
+	}
+)
+
+export const deleteBlog = createAsyncThunk(
+	'blog/deleteBlog',
+	async ({ id, navigate }, { rejectWithValue }) => {
+		try {
+			const response = await api.deleteBlog(id)
+			navigate('/')
 			return response.data
 		} catch (err) {
 			return rejectWithValue(err.response.data)
@@ -97,6 +122,41 @@ const blogSlice = createSlice({
 			state.tagBlog = action.payload
 		},
 		[getBlogByTag.rejected]: (state, action) => {
+			state.loading = false
+			state.error = action.payload.message
+		},
+		[deleteBlog.pending]: (state, action) => {
+			state.loading = true
+		},
+		[deleteBlog.fulfilled]: (state, action) => {
+			state.loading = false
+			const {
+				arg: { id }
+			} = action.meta
+			if (id) {
+				state.blogs = state.blogs.filter(item => item._id !== id)
+			}
+		},
+		[deleteBlog.rejected]: (state, action) => {
+			state.loading = false
+			state.error = action.payload.message
+		},
+		[editBlog.pending]: (state, action) => {
+			state.loading = true
+		},
+		[editBlog.fulfilled]: (state, action) => {
+			state.loading = false
+			const {
+				arg: { id }
+			} = action.meta
+			if (id && state.blog._id === id) {
+				// state.blogs = state.blogs.map(item =>
+				// 	item._id === id ? action.payload : item
+				// )
+				state.blog = action.payload
+			}
+		},
+		[editBlog.rejected]: (state, action) => {
 			state.loading = false
 			state.error = action.payload.message
 		}

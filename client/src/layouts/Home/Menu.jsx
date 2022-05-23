@@ -59,7 +59,7 @@ const ItemMenu = styled.li`
 	}
 `
 
-const Menu = ({ isActive, setIsActive, color }) => {
+const Menu = ({ isActive, setIsActive }) => {
 	const { user } = useSelector(state => ({ ...state.auth }))
 	const dispatch = useDispatch()
 	const token = user?.token
@@ -99,7 +99,7 @@ const Menu = ({ isActive, setIsActive, color }) => {
 						<Link to={path.create}>CREATE</Link>
 					</ItemMenu>
 					<ItemMenu>
-						<Link to="">ABOUT ME</Link>
+						<Link to={path.about}>ABOUT</Link>
 					</ItemMenu>
 					{userOnline && (
 						<ItemMenu>

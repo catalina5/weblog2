@@ -6,5 +6,7 @@ export const path = {
 	productDetail: '/blog/:id',
 	BlogTag: '/blog/tag/:tag',
 	create: '/create',
+	edit: '/create/:id',
+	about: '/about',
 	notFound: '*'
 }
