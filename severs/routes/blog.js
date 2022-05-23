@@ -9,13 +9,16 @@ const {
   editBlog,
   deleteBlog,
   getBlogByTag,
+  // getBlogBySearch,
+  Search,
 } = require("../controllers/blog.js");
 
 router.post("/post", createBlog);
 router.get("/", getBlogs);
 router.put("/put/:id", editBlog);
 router.get("/tag/:tag", getBlogByTag);
-router.get("/:id", getBlog);
 router.delete("/delete/:id", deleteBlog);
+router.get("/search", Search);
+router.get("/:id", getBlog);
 
 module.exports = router;

@@ -8,5 +8,6 @@ export const path = {
 	create: '/create',
 	edit: '/create/:id',
 	about: '/about',
+	search: '/search',
 	notFound: '*'
 }

@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { path } from 'src/constants/path'
 import styled, { css } from 'styled-components'
 import { setLogout } from '../../redux/features/authSlice'
 import decode from 'jwt-decode'
+import { searchBlog } from 'src/redux/features/blogSlice'
 
 const MenuWrapper = styled.div`
 	z-index: 1000;
@@ -57,10 +58,30 @@ const ItemMenu = styled.li`
 		transition: color 0.1s linear;
 		text-decoration: none;
 	}
+	form {
+		display: flex;
+		border: 2px solid #eee;
+		border-radius: 10px;
+		overflow: hidden;
+		input {
+			padding: 10px;
+			border: none;
+		}
+		button {
+			padding: 10px;
+			background-color: #2cccff;
+			border: none;
+			outline: none;
+			color: white;
+			height: 100%;
+		}
+	}
 `
 
 const Menu = ({ isActive, setIsActive }) => {
 	const { user } = useSelector(state => ({ ...state.auth }))
+	const [search, setSearch] = useState('')
+	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const token = user?.token
 	const userOnline = JSON.parse(localStorage.getItem('profile'))
@@ -75,6 +96,16 @@ const Menu = ({ isActive, setIsActive }) => {
 	}
 	const handleLogout = () => {
 		dispatch(setLogout())
+	}
+	const handleSubmit = e => {
+		e.preventDefault()
+		if (search) {
+			dispatch(searchBlog(search))
+			navigate(`/search?searchQuery=${search}`)
+			setSearch('')
+		} else {
+			navigate('/')
+		}
 	}
 	return (
 		<MenuWrapper active={isActive}>
@@ -93,7 +124,15 @@ const Menu = ({ isActive, setIsActive }) => {
 						</ItemMenu>
 					)}
 					<ItemMenu>
-						<Link to={path.home}>HOME</Link>
+						<form onSubmit={handleSubmit}>
+							<input
+								type="text"
+								placeholder="Search Blog"
+								value={search}
+								onChange={e => setSearch(e.target.value)}
+							/>
+							<button type="submit">Tìm</button>
+						</form>
 					</ItemMenu>
 					<ItemMenu>
 						<Link to={path.create}>CREATE</Link>

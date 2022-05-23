@@ -37,7 +37,7 @@ export const getBlogs = createAsyncThunk(
 	}
 )
 export const getBlog = createAsyncThunk(
-	'tour/getBlog',
+	'blog/getBlog',
 	async (id, { rejectWithValue }) => {
 		try {
 			const response = await api.getBlog(id)
@@ -48,10 +48,21 @@ export const getBlog = createAsyncThunk(
 	}
 )
 export const getBlogByTag = createAsyncThunk(
-	'tour/getBlogByTag',
+	'blog/getBlogByTag',
 	async (tag, { rejectWithValue }) => {
 		try {
 			const response = await api.getBlogByTag(tag)
+			return response.data
+		} catch (err) {
+			return rejectWithValue(err.response.data)
+		}
+	}
+)
+export const searchBlog = createAsyncThunk(
+	'blog/searchBlog',
+	async (searchQuery, { rejectWithValue }) => {
+		try {
+			const response = await api.getBlogBySearch(searchQuery)
 			return response.data
 		} catch (err) {
 			return rejectWithValue(err.response.data)
@@ -150,13 +161,21 @@ const blogSlice = createSlice({
 				arg: { id }
 			} = action.meta
 			if (id && state.blog._id === id) {
-				// state.blogs = state.blogs.map(item =>
-				// 	item._id === id ? action.payload : item
-				// )
 				state.blog = action.payload
 			}
 		},
 		[editBlog.rejected]: (state, action) => {
+			state.loading = false
+			state.error = action.payload.message
+		},
+		[searchBlog.pending]: (state, action) => {
+			state.loading = true
+		},
+		[searchBlog.fulfilled]: (state, action) => {
+			state.loading = false
+			state.blogs = action.payload
+		},
+		[searchBlog.rejected]: (state, action) => {
 			state.loading = false
 			state.error = action.payload.message
 		}

@@ -10,6 +10,7 @@ import Creator from './layouts/Creator/Creator'
 import Register from './layouts/Login/Register'
 import BlogTag from './layouts/BlogTag/BlogTag'
 import About from './layouts/About/About'
+import SearchBlog from './layouts/SearchBlog/SearchBlog'
 
 const Router = () => {
 	return (
@@ -23,6 +24,7 @@ const Router = () => {
 			<Route path={path.productDetail} element={<Detail />} />
 			<Route path={path.about} element={<About />} />
 			<Route path={path.BlogTag} element={<BlogTag />} />
+			<Route path={path.search} element={<SearchBlog />} />
 		</Routes>
 	)
 }
