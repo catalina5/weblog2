@@ -18,3 +18,6 @@ export const createBlog = blogData => API.post('/blogs/post', blogData)
 export const getBlogs = () => API.get('/blogs')
 export const getBlog = id => API.get(`/blogs/${id}`)
 export const getBlogByTag = tag => API.get(`/blogs/tag/${tag}`)
+export const deleteBlog = id => API.delete(`/blogs/delete/${id}`)
+export const editBlog = (editBlogData, id) =>
+	API.put(`/blogs/put/${id}`, editBlogData)

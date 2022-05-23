@@ -14,8 +14,8 @@ const {
 router.post("/post", createBlog);
 router.get("/", getBlogs);
 router.put("/put/:id", editBlog);
-router.delete("/delete/:id", deleteBlog);
 router.get("/tag/:tag", getBlogByTag);
 router.get("/:id", getBlog);
+router.delete("/delete/:id", deleteBlog);
 
 module.exports = router;

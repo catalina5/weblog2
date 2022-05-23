@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navdetail_trend.css'
 import {
 	FiChevronRight,
@@ -10,17 +10,29 @@ import {
 	FiVoicemail
 } from 'react-icons/fi'
 import { BiFemale, BiTime } from 'react-icons/bi'
-// import img1 from '../../../../../assets/img/detail/img_detail.jpg'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { getBlog } from 'src/redux/features/blogSlice'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { deleteBlog, getBlog } from 'src/redux/features/blogSlice'
 import moment from 'moment'
 
-export const Navdetail_trend = () => {
+export const NavdetailTrend = () => {
 	const dispatch = useDispatch()
 	const { id } = useParams()
 	const { blog } = useSelector(state => ({ ...state.blog }))
-
+	const [visible, setVisible] = useState(true)
+	const handleRemoveChoose = () => {
+		setVisible(!visible)
+		console.log('no')
+	}
+	const navigate = useNavigate()
+	const handleDeletePost = () => {
+		if (id) {
+			dispatch(deleteBlog({ id, navigate }))
+		}
+	}
+	const handleUpdateBlog = () => {
+		navigate(`/create/${id}`)
+	}
 	useEffect(() => {
 		if (id) {
 			dispatch(getBlog(id))
@@ -36,8 +48,21 @@ export const Navdetail_trend = () => {
 					Grid camera style <FiChevronRight />
 				</Link>
 			</div>
-			<div className="row mt-4">
+			<div className="row mt-4 blog-title">
 				<h1>{blog.title}</h1>
+				<div className="wrapped-editor">
+					<button onClick={handleUpdateBlog}>Sửa</button>
+					<div className="delete-button" onClick={handleRemoveChoose}>
+						<div>Xóa</div>
+						<div className={`sure ${visible ? 'visible' : ''}`}>
+							<span>Bạn có chắc muốn xóa?</span>
+							<div className="sure__choose">
+								<button onClick={handleDeletePost}>Yes</button>
+								<button>No</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div className="row border-bottom">
 				<li className=" mr-4">
@@ -55,20 +80,9 @@ export const Navdetail_trend = () => {
 				<li className="mt-4 justify-center">{blog.description}</li>
 				<li className="mt-4 justify-center">{blog.description}</li>
 			</div>
-			{/* <div className="heading-detail">
-				<h1 className="mt-3">This is heading 1</h1>
-				<h2 className="mt-3">This is heading 2</h2>
-				<h2 className="mt-3">This is heading 3</h2>
-				<h3 className="mt-3">This is heading 4</h3>
-				<h4 className="mt-3">This is heading 5</h4>
-				<h5 className="mt-3">This is heading 6</h5>
-			</div> */}
 			<div className="mt-4 btn-detail">
 				<button type="button" className="mr-2 btn btn-secondary">
-					Tags
-				</button>
-				<button type="button" className="mr-2 btn btn-info">
-					Music
+					{blog.tags}
 				</button>
 			</div>
 			<div className="btn-infos mt-4">

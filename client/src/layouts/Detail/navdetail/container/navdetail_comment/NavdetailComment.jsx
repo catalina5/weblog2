@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import '../navdetail_comment/post_comment.css'
+import './post_comment.css'
 import moment from 'moment'
 import { GoClock } from 'react-icons/go'
 import { FaRegCommentDots } from 'react-icons/fa'
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getBlogs } from 'src/redux/features/blogSlice'
 import { useNavigate } from 'react-router-dom'
 
-export const Navdetail_comment = () => {
+export const NavdetailComment = () => {
 	const { blogs } = useSelector(state => state.blog)
 	const dispatch = useDispatch()
 	useEffect(() => {

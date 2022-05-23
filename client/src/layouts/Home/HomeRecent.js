@@ -3,12 +3,11 @@ import '../../assets/styles/home_recent.css'
 import { FaUser } from 'react-icons/fa'
 import { GoClock } from 'react-icons/go'
 import { Link, useNavigate } from 'react-router-dom'
-import data from 'src/data'
 import { useDispatch, useSelector } from 'react-redux'
 import { getBlogs } from 'src/redux/features/blogSlice'
 
-const Home_Posts = () => {
-	const [moreElement, setMoreElement] = useState(6)
+const HomeRecent = () => {
+	const [moreElement, setMoreElement] = useState(4)
 	const { blogs } = useSelector(state => state.blog)
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -26,7 +25,7 @@ const Home_Posts = () => {
 
 			<div className="">
 				<div className="row">
-					{blogs?.map((item, index) => {
+					{blogs?.slice(0, moreElement).map((item, index) => {
 						return (
 							<div
 								key={item._id}
@@ -60,11 +59,9 @@ const Home_Posts = () => {
 					})}
 				</div>
 
-				<div className="load-more" onClick={() => loadMore()}>
+				<div className="load-more" onClick={loadMore}>
 					<button>
-						{data.homePost.length >= moreElement
-							? 'Load More'
-							: 'That this all'}
+						{moreElement <= blogs.length ? 'Load More' : 'That this all'}
 					</button>
 				</div>
 			</div>
@@ -72,4 +69,4 @@ const Home_Posts = () => {
 	)
 }
 
-export default Home_Posts
+export default HomeRecent
