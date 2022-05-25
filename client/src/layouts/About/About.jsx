@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import styled from 'styled-components'
 export const AboutWrapper = styled.div`
@@ -10,10 +11,22 @@ export const AboutWrapper = styled.div`
 	border-radius: 10px;
 	background-color: white;
 	padding-top: 20px;
+	position: relative;
 	.title {
 		text-align: center;
 		margin-bottom: 20px;
 		text-transform: uppercase;
+	}
+	.back {
+		background-color: #f62682;
+		color: white;
+		border: none;
+		padding: 5px 10px;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+		position: absolute;
+		top: 20px;
+		outline: none;
 	}
 	.group {
 		padding: 20px;
@@ -108,12 +121,16 @@ const Member = [
 	}
 ]
 const About = () => {
+	const navigate = useNavigate()
 	return (
 		<Body>
 			<AboutWrapper>
 				<h1 className="title">
 					Thành viên nhóm <strong style={{ color: '#2cccff' }}>Ocean</strong>
 				</h1>
+				<button className="back" onClick={() => navigate(-1)}>
+					Back
+				</button>
 				<div className="group">
 					{Member.map((item, index) => (
 						<div className="people" key={index}>

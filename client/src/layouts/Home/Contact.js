@@ -10,11 +10,25 @@ import { Link } from 'react-router-dom'
 const Contact = () => {
 	return (
 		<div className="contact">
-			<div className="contact-logo">
-				<img
-					src="https://1.bp.blogspot.com/-BwsE3vP7gX4/Ye6mJeD1SdI/AAAAAAAAKJk/Mnrn1zeELXMIcBr0j8o1dYd5Z6yZbGyuwCNcBGAsYHQ/s1600/output-onlinepngtools_180x60.png"
-					alt=""
-				/>
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center'
+				}}
+			>
+				<span
+					className="contact-logo"
+					style={{ fontSize: '50px', fontWeight: 'bold' }}
+				>
+					OCE
+				</span>
+				<span
+					className="contact-logo"
+					style={{ fontSize: '50px', fontWeight: 'bold', color: '#ccc' }}
+				>
+					AN
+				</span>
 			</div>
 			<div className="contact-info">
 				<Link to="/">
@@ -33,7 +47,7 @@ const Contact = () => {
 			<div className="contact-content">
 				<span>Created with</span>
 				<AiFillHeart className="contact-content-icon" />
-				<span>By Omtemplates</span>
+				<span>By Catalina</span>
 			</div>
 		</div>
 	)
