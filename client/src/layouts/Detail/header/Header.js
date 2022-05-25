@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { path } from 'src/constants/path'
+import { setLogout } from 'src/redux/features/authSlice'
 import logo from '../../../assets/img/detail/logo_header_detail.png'
 import '../header/header.css'
 
 export default function Header() {
+	const { user } = useSelector(state => ({ ...state.auth }))
+
+	const [online, setOnline] = useState(null)
+	useEffect(() => {
+		setOnline(JSON.parse(localStorage.getItem('profile')))
+	}, [user])
+	const dispatch = useDispatch()
+	const handleLogout = () => {
+		dispatch(setLogout())
+	}
 	return (
 		<div style={{ backgroundColor: '#333' }}>
 			<nav className="container navbar navbar-expand-lg ">
@@ -13,67 +26,59 @@ export default function Header() {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav  ml-auto">
 						<li className=" nav-item active">
-							<a className="header-detail-text nav-link" href="#">
+							<Link to={path.home} className="header-detail-text nav-link">
 								Home
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item dropdown">
-							<a
-								className="header-detail-text nav-link dropdown-toggle"
-								href="#"
+							<Link
+								className="header-detail-text nav-link "
+								to={path.create}
 								id="navbarDropdown"
 								role="button"
-								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false"
 							>
-								Features
-							</a>
-
-							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<div className="dropdown-divider"></div>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</div>
+								Create
+							</Link>
 						</li>
 						<li className="header-detail-text nav-item dropdown">
-							<a
-								className="header-detail-text nav-link dropdown-toggle"
-								href="#"
+							<Link
+								className="header-detail-text nav-link "
+								to={path.about}
 								id="navbarDropdown"
 								role="button"
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false"
 							>
-								Documentation
-							</a>
-
-							<div className="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a className="dropdown-item" href="#">
-									Action
-								</a>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-								<div className="dropdown-divider"></div>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</div>
+								About
+							</Link>
 						</li>
-						<li className=" nav-item active">
-							<a className="header-detail-text nav-link" href="#">
-								Download This Template
-							</a>
-						</li>
+						{online ? (
+							<>
+								<li className=" nav-item active">
+									<div className="header-detail-text nav-link">
+										Tài khoản: {online.result.name}
+									</div>
+								</li>
+								<li className=" nav-item active">
+									<div
+										className="header-detail-text nav-link"
+										style={{ cursor: 'pointer' }}
+										onClick={handleLogout}
+									>
+										Logout
+									</div>
+								</li>
+							</>
+						) : (
+							<li className=" nav-item active">
+								<Link to="/login" className="header-detail-text nav-link">
+									Login
+								</Link>
+							</li>
+						)}
 					</ul>
 				</div>
 			</nav>

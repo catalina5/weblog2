@@ -16,13 +16,13 @@ const Slider = () => {
 		if (count === -3075) {
 			setCount(615)
 		}
-		setCount(count => count - 615)	
+		setCount(count => count - 615)
 		console.log(count)
 	}
 	//giảm
 	const handleDiscount = () => {
 		console.log('Giảm')
-		if (count === 0 ) {
+		if (count === 0) {
 			setCount(-3690)
 		}
 		setCount(count => count + 615)

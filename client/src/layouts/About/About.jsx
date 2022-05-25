@@ -1,6 +1,6 @@
 import React from 'react'
+
 import styled from 'styled-components'
-import img1 from '../../assets/images/tuy2.jpg'
 export const AboutWrapper = styled.div`
 	margin: auto;
 	width: 500px;
@@ -96,7 +96,8 @@ const Member = [
 		id: 5,
 		name: 'Võ Quốc Tuy',
 		title: 'Thành viên phế vật, diễn viên, éo biết cái gì.',
-		image: img1
+		image:
+			'https://scontent.fdad2-1.fna.fbcdn.net/v/t1.15752-9/279226253_546118147188199_6764113346101603954_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=ae9488&_nc_ohc=vZvCdgUcJx0AX-sPALQ&tn=Q2aIPoLNCrwl9Sn4&_nc_ht=scontent.fdad2-1.fna&oh=03_AVIY4pIYFObikRND2ZGA_hqiSGH6ojAWOvXlg_uGST0_ag&oe=62B1722F'
 	},
 	{
 		id: 6,

@@ -25,7 +25,7 @@ const HomeRecent = () => {
 
 			<div className="">
 				<div className="row">
-					{blogs?.slice(0, moreElement).map((item, index) => {
+					{blogs?.slice(0, moreElement).map(item => {
 						return (
 							<div
 								key={item._id}
@@ -61,7 +61,7 @@ const HomeRecent = () => {
 
 				<div className="load-more" onClick={loadMore}>
 					<button>
-						{moreElement <= blogs.length ? 'Load More' : 'That this all'}
+						{moreElement < blogs.length ? 'Load More' : 'That this all'}
 					</button>
 				</div>
 			</div>
