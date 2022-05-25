@@ -27,7 +27,7 @@ const BlogTag = () => {
 						return (
 							<div
 								key={item._id}
-								className="posts-item col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-5 mb-2"
+								className="posts-item col-sm-12 col-md-6 col-lg-6 col-xl-4 mt-5 mb-2 "
 							>
 								<div
 									onClick={() => navigate(`/blog/${item._id}`)}

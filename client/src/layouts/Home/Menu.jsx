@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { Link, useNavigate } from 'react-router-dom'
@@ -80,11 +80,14 @@ const ItemMenu = styled.li`
 
 const Menu = ({ isActive, setIsActive }) => {
 	const { user } = useSelector(state => ({ ...state.auth }))
+	const [online, setOnline] = useState(null)
+	useEffect(() => {
+		setOnline(JSON.parse(localStorage.getItem('profile')))
+	}, [user])
 	const [search, setSearch] = useState('')
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
 	const token = user?.token
-	const userOnline = JSON.parse(localStorage.getItem('profile'))
 	if (token) {
 		const decodedToken = decode(token)
 		if (decodedToken.exp * 1000 < new Date().getTime()) {
@@ -114,9 +117,9 @@ const Menu = ({ isActive, setIsActive }) => {
 					<i className="fa-solid fa-xmark"></i>
 				</IconToogle>
 				<ListMenu>
-					{userOnline ? (
+					{online ? (
 						<ItemMenu>
-							<h1>{userOnline.result.name}</h1>
+							<h1>{online.result.name}</h1>
 						</ItemMenu>
 					) : (
 						<ItemMenu>
@@ -140,7 +143,7 @@ const Menu = ({ isActive, setIsActive }) => {
 					<ItemMenu>
 						<Link to={path.about}>ABOUT</Link>
 					</ItemMenu>
-					{userOnline && (
+					{online && (
 						<ItemMenu>
 							<div style={{ cursor: 'pointer' }} onClick={() => handleLogout()}>
 								LOGOUT

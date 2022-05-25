@@ -1,6 +1,6 @@
 .container-slider {
 	position: relative;
-	height: 352px;
+	height: 600px;
 	width: 100%;
 }
 .slider-heading {
@@ -11,12 +11,20 @@
 .slider-list {
 	width: 100%;
 	height: 100%;
-	/* border : 1px solid #000; */
 	overflow: hidden;
 }
 .slider-list-items {
-	height: 352px;
+	height: 600px;
 	width: 100%;
+}
+.slider-list-item {
+	width: 100%;
+	height: 100%;
+}
+.slider-list-item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 .slider-list_item {
 	width: 100%;
@@ -44,7 +52,7 @@
 	color: #fff;
 }
 .slider-list-content {
-	bottom: 10%;
+	bottom: 100px;
 	left: 2%;
 	position: absolute;
 	z-index: 1000;
@@ -60,14 +68,22 @@
 	line-height: 29px;
 	border-radius: 2px;
 	margin-bottom: 10px;
+	padding: 10px;
+	color: white;
+}
+.slider-list-content_item:hover {
+	text-decoration: none;
+
+	color: white;
 }
 .slider-list-content_text {
 	color: #a873ff;
 	background-position: 0px 0px;
-	color: #646464;
+	color: white;
 	font-size: 24px;
 	font-weight: 500;
 	letter-spacing: 0.2px;
+	margin-top: 20px;
 }
 .slider-translate {
 	display: flex;

@@ -48,10 +48,16 @@ export const NavdetailTrend = () => {
 				</Link>
 			</div>
 			<div className="row mt-4 blog-title">
-				<h1>{blog.title}</h1>
+				<h1 style={{ width: '100%', maxWidth: '600px' }}>{blog.title}</h1>
 				<div className="wrapped-editor">
-					<button onClick={handleUpdateBlog}>Sửa</button>
-					<div className="delete-button" onClick={handleRemoveChoose}>
+					<button onClick={handleUpdateBlog} style={{ height: '50px' }}>
+						Sửa
+					</button>
+					<div
+						style={{ height: '50px' }}
+						className="delete-button"
+						onClick={handleRemoveChoose}
+					>
 						<div>Xóa</div>
 						<div className={`sure ${visible ? 'visible' : ''}`}>
 							<span>Bạn có chắc muốn xóa?</span>

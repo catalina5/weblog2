@@ -7,7 +7,7 @@ export const login = createAsyncThunk(
 		try {
 			const response = await api.signIn(formValue)
 			toast.success('Login Successfully')
-			navigate('/')
+			navigate(-1)
 			return response.data
 		} catch (err) {
 			return rejectWithValue(err.response.data)

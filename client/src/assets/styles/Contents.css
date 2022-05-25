@@ -51,6 +51,9 @@
 	color: black;
 	text-decoration: none;
 }
+.post-item .title {
+	flex: 1;
+}
 .post-item:hover {
 	text-decoration: none;
 	color: rgb(137, 34, 206);
@@ -77,7 +80,7 @@
 .post-container_img {
 	border-radius: 2px;
 	margin-right: 8px !important;
-	width: 30%;
+	width: 20%;
 	height: 100%;
 	object-fit: cover;
 }
