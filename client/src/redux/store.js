@@ -5,6 +5,7 @@ import BlogReducer from './features/blogSlice'
 export default configureStore({
 	reducer: {
 		auth: AuthReducer,
-		blog: BlogReducer
+		blog: BlogReducer,
+
 	}
 })

@@ -128,7 +128,7 @@ const Creator = () => {
 		<Body>
 			<FormWrapper>
 				<WrapTitle>
-					<FormReward onClick={() => navigate('/')}>Back</FormReward>
+					<FormReward onClick={() => navigate(-1)}>Back</FormReward>
 					<FormTitle>{!id ? 'Create post' : 'Edit post'}</FormTitle>
 				</WrapTitle>
 				<form onSubmit={handleSubmit}>

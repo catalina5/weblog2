@@ -22,7 +22,6 @@ export const NavdetailTrend = () => {
 	const [visible, setVisible] = useState(true)
 	const handleRemoveChoose = () => {
 		setVisible(!visible)
-		console.log('no')
 	}
 	const navigate = useNavigate()
 	const handleDeletePost = () => {
