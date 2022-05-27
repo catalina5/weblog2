@@ -53,8 +53,7 @@ li {
 	margin-right: 20px;
 }
 .sure.visible {
-	opacity: 0;
-	visibility: hidden;
+	display: none;
 }
 .sure {
 	position: absolute;

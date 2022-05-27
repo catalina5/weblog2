@@ -35,7 +35,7 @@ function Contents() {
 									src={item.imageFile}
 									alt=""
 								/>
-								<p className="title">{item.title}</p>
+								<p className="post-container_title">{item.title}</p>
 							</Link>
 						))}
 				</div>
