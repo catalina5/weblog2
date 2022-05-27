@@ -5,5 +5,14 @@
 
 .btn-infos-item {
 	color: #fff;
-    width: 80px;
+	width: 80px;
+}
+.header-container {
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.header-container a {
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
 }

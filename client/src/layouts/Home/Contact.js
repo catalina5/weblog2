@@ -11,10 +11,8 @@ const Contact = () => {
 	return (
 		<div className="contact">
 			<div className="contact-logo">
-				<img
-					src="https://1.bp.blogspot.com/-BwsE3vP7gX4/Ye6mJeD1SdI/AAAAAAAAKJk/Mnrn1zeELXMIcBr0j8o1dYd5Z6yZbGyuwCNcBGAsYHQ/s1600/output-onlinepngtools_180x60.png"
-					alt=""
-				/>
+				<h1>OCE</h1>
+				<h1>AN</h1>
 			</div>
 			<div className="contact-info">
 				<Link to="/">
@@ -33,7 +31,7 @@ const Contact = () => {
 			<div className="contact-content">
 				<span>Created with</span>
 				<AiFillHeart className="contact-content-icon" />
-				<span>By Omtemplates</span>
+				<span className="author-contact">Catalina</span>
 			</div>
 		</div>
 	)

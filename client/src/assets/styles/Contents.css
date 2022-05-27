@@ -77,9 +77,12 @@
 .post-container_img {
 	border-radius: 2px;
 	margin-right: 8px !important;
-	width: 30%;
+	width: 20%;
 	height: 100%;
 	object-fit: cover;
+}
+.post-container_title {
+	flex: 1;
 }
 .font_container {
 	display: flex;

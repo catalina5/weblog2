@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { path } from 'src/constants/path'
 import { setLogout } from 'src/redux/features/authSlice'
-import logo from '../../../assets/img/detail/logo_header_detail.png'
 import '../header/header.css'
 
 export default function Header() {
@@ -18,10 +17,13 @@ export default function Header() {
 		dispatch(setLogout())
 	}
 	return (
-		<div style={{ backgroundColor: '#333' }}>
+		<div className="header-container">
 			<nav className="container navbar navbar-expand-lg ">
 				<Link className="navbar-brand" to="/">
-					<img src={logo} alt="" />
+					<div className="contact-logo">
+						<h1>OCE</h1>
+						<h1>AN</h1>
+					</div>
 				</Link>
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav  ml-auto">
@@ -58,18 +60,30 @@ export default function Header() {
 						{online ? (
 							<>
 								<li className=" nav-item active">
-									<div className="header-detail-text nav-link">
+									<span
+										className="header-detail-text nav-link"
+										style={{
+											color: 'black',
+											fontWeight: 'bold',
+											fontSize: '16px'
+										}}
+									>
 										Tài khoản: {online.result.name}
-									</div>
+									</span>
 								</li>
 								<li className=" nav-item active">
-									<div
+									<span
 										className="header-detail-text nav-link"
-										style={{ cursor: 'pointer' }}
+										style={{
+											cursor: 'pointer',
+											color: 'black',
+											fontWeight: 'bold',
+											fontSize: '16px'
+										}}
 										onClick={handleLogout}
 									>
 										Logout
-									</div>
+									</span>
 								</li>
 							</>
 						) : (
