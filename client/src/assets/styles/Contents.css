@@ -8,8 +8,8 @@
 }
 .post-content {
 	width: 40%;
-	height: auto;
 	position: relative;
+	height: 100%;
 }
 .post-content__img {
 	height: 100%;
@@ -61,6 +61,10 @@
 .post-container {
 	font-weight: 600;
 	width: 55%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .post-item-history {
 	display: flex;

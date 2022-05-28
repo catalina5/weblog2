@@ -89,8 +89,6 @@ export const NavdetailTrend = () => {
 			<div className="mt-4">
 				<img className="detail-img" src={blog.imageFile} alt="" />
 				<li className="mt-4 justify-center">{blog.description}</li>
-				<li className="mt-4 justify-center">{blog.description}</li>
-				<li className="mt-4 justify-center">{blog.description}</li>
 			</div>
 			<div className="mt-4 btn-detail">
 				<button type="button" className="mr-2 btn btn-secondary">
