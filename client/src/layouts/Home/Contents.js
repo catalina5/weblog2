@@ -13,7 +13,12 @@ function Contents() {
 	return (
 		<div className="mt-4 contents_container_all">
 			<h1 className="slider-heading mt-4">Popular Posts</h1>
-			<div className="wrap mt-4">
+			<div
+				className="wrap mt-4 "
+				style={{
+					height: '400px'
+				}}
+			>
 				{blogs &&
 					blogs.slice(1, 2).map((item, i) => (
 						<Link

@@ -32,12 +32,12 @@ const editBlog = function (req, res, next) {
 };
 
 const deleteBlog = async (req, res, next) => {
-  const { id } = req.params.id;
+  const { id } = req.params;
   try {
-    await BlogModal.deleteOne(id);
+    await BlogModal.findByIdAndDelete(id);
     res.json({ message: "Blog deleted successfully" });
   } catch (error) {
-    res.status(404).json({ message: "Lỗi không xóa được!" });
+    res.status(404).json({ message: "Something went wrong" });
   }
 };
 
