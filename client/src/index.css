@@ -18,6 +18,24 @@ code {
 	display: flex !important;
 	justify-content: space-evenly;
 }
+.slick-arrow {
+	border-radius: 10px;
+	/* padding: 10px 15px; */
+	display: flex;
+	justify-content: center;
+	align-self: center;
+	width: 80px !important;
+	height: 40px !important;
+	color: white;
+	outline: none !important;
+	border: none !important;
+}
+.slick-prev {
+	background-color: #f62682;
+}
+.slick-next {
+	background-color: #2cccff;
+}
 .slick-prev {
 	position: absolute;
 	top: 15%;
